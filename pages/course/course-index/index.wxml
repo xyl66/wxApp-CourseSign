@@ -1,0 +1,54 @@
+<!--pages/tools/idcard/idcard-index.wxml-->
+<import src="/pages/course/course-list/course-list-template.wxml"/>
+<view class="flex box box-tb box-align-center">
+  <view class="calendar pink-color box box-tb">
+        <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+            <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+                <view class="prev-handle box box-lr box-align-center box-pack-center"></view>
+            </view>
+            <view bindtap="chooseYearAndMonth" class="date-area box box-lr box-align-center box-pack-center">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+            <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
+                <view class="next-handle box box-lr box-align-center box-pack-center"></view>
+            </view>
+        </view>
+        <view class="weeks box box-lr box-pack-center box-align-center">
+            <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+        </view>
+        <view class="days box box-lr box-wrap">
+            <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="tapDayItem">
+                <view class="day {{item.choosed ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item.day}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<block wx:if="{{!showPicker}}">
+<view class="page-session page-session-spacing">
+    <view class="session-header">
+      <text class="session-header-title">{{headerTitle}}</text>
+      <text class='iconfont icon-count light-blue-color session-header-hide session-header-hide-{{listShow}}'></text><text class='height-46 line-height-46 margin-left-10 font-size-32 font-weight-500 session-header-hide session-header-hide-{{listShow}}'>{{courseCount}}</text>
+    </view>
+    <view class="session-content session-content-spacing">
+      <scroll-view class="course-scroll margin-right-hide-{{listShow}}" scroll-x="true">
+        <block wx:for="{{courseList}}" wx:key="id"  wx:for-item="item">
+         <template is="course-list" data="{{...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+</view>
+</block>
+<view wx:if="{{showPicker}}" class="box box-tb">
+	<view class="picker-btns box box-lr box-pack-between box-align-center">
+		<view class="picker-btn picker-cancel" data-type="cancel" bindtap="tapPickerBtn">取消</view>
+		<view class="picker-btn picker-confirm" data-type="confirm" bindtap="tapPickerBtn">确定</view>
+	</view>
+	<picker-view class="flex" indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{picker_value}}" bindchange="pickerChange">
+		<picker-view-column>
+			<view class="picker-view" wx:for="{{picker_year}}" style="line-height: 50px">{{item}}年</view>
+		</picker-view-column>
+		<picker-view-column>
+			<view class="picker-view" wx:for="{{picker_month}}" style="line-height: 50px">{{item}}月</view>
+		</picker-view-column>
+	</picker-view>
+</view>

@@ -1,0 +1,31 @@
+<template name='courseInfo'>
+  <view class='title-section bg-color-white margin-top-20px'>
+    <text class='font-size-32 text-align-center wd-100 ellipsis-1 font-weight-600'>{{course.name}}</text>
+  </view>
+  <view class='font-size-32 margin-top-15px  color-grey'>课程信息</view>
+  <view class='info-section box margin-top-8px  bg-color-white'>
+        <view class='place wd-50 text-align-center right-line'>
+          <text class="margin-left-20 block font-size-28 ellipsis-1 width-270 height-46 line-height-46 ">{{course.course_place}}</text>
+          <text class='iconfont block  icon-changdi pink-color'>主会场</text>
+        </view>
+        <view class='speaker wd-50 text-align-center '>
+          <text class="speaker block margin-left-20  font-size-28 ellipsis-1 width-270 height-46 line-height-46">{{course.course_speaker}}</text>
+          <text class='iconfont block  icon-ren blue-color'>主讲人</text>
+        </view>
+      </view>
+  <view class='font-size-32 margin-top-15px color-grey'>
+  <text class=''>上课时间</text>
+  <text class=' margin-left-10'>{{course_time.yearAndMonth}}</text>
+  </view>
+  <view class='time-section space-between box margin-top-8px bg-color-white'>
+        <view class='start-time wd-50 text-align-center'>
+        <text class="font-size-28 block ">{{course_time.start}}</text>
+         <text class='iconfont icon-shijian block  green-color'>开始</text>
+        </view>
+        <view class='end-time wd-50 text-align-center'>
+        <text class="title font-size-28 block ">{{course_time.end}}</text>
+        <text class='iconfont icon-shijian block  red-color'>结束</text>
+        </view>
+        
+      </view>
+</template>

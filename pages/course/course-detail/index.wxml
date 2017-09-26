@@ -1,0 +1,12 @@
+<!--pages/course-detail/index.wxml-->
+<import src='course-info/course-info-template.wxml' />
+<import src='sign-form/sign-form-template.wxml' />
+<view class='content'>
+  <view class='course-info-section margin-left-20 margin-right-20 '>
+    <template is='courseInfo' data='{{...courseInfo}}'>
+    </template>
+  </view>
+  <view class='user-form-section bg-color-white margin-top-20px margin-left-20 margin-right-20 padding-left-right-20'>
+    <template is='signForm'/>
+  </view>
+</view>

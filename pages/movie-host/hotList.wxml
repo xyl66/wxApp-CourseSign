@@ -1,0 +1,12 @@
+<!--pages/movie/hotList.wxml-->
+<import src="/pages/movie-rating/movie-rating-template.wxml" />
+<template name="movie-host-list">
+  <view class="movie-wrapper" bindtap="bindMovieDetail" data-id="{{id}}">
+    <view class="movie-content">
+      <image class="poster" src="{{images.medium}}"></image>
+      <text class="name">{{title}}</text>
+      <template is="rating-template" wx:if="{{showRating}}"  data="{{rating}}" />
+      <text wx:if="{{showWish}}" class="wish-count">{{collect_count}}人想看</text>
+    </view>
+  </view>
+</template>

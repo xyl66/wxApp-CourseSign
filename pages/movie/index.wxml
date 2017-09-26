@@ -1,0 +1,37 @@
+<!--pages/movie/index.wxml-->
+<import src="/pages/movie-host/hotList.wxml"/>
+<view class="header"></view>
+<view class="content">
+<view class="session-search session-search-spacing">
+    <icon class="session-search-icon" type="search" size="16"></icon>
+    <text class="search-placeholder" bindtap="bindSearchNavigate">搜索电影</text>
+  </view>
+  <view class="page-session page-session-spacing">
+    <view class="session-header">
+      <text class="session-header-title">{{inTheaters.categoryTitle}}</text>
+      <text class="session-header-more" bindtap="bindMore" data-type-id="intheaters">更多</text>
+    </view>
+    <view class="session-content session-content-spacing">
+      <scroll-view class="movie-scroll" scroll-x="true">
+        <block wx:for="{{inTheaters.movies}}" wx:for-item="item">
+         <template is="movie-host-list" data="{{...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+<view class="page-session page-session-spacing">
+    <view class="session-header">
+      <text class="session-header-title">{{comingSoon.categoryTitle}}</text>
+      <text class="session-header-more" bindtap="bindMore" data-type-id="intheaters">更多</text>
+    </view>
+    <view class="session-content session-content-spacing">
+      <scroll-view class="movie-scroll" scroll-x="true">
+        <block wx:for="{{comingSoon.movies}}" wx:for-item="item">
+         <template is="movie-host-list" data="{{...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class="footer"></view>
+

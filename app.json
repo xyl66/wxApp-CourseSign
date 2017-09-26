@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/course/course-index/index",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/movie/index",
+    "pages/course/course-detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFA54F",
+    "navigationBarTitleText": "课程签到",
+    "navigationBarTextStyle": "white"
+  }
+}

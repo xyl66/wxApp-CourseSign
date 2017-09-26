@@ -1,0 +1,71 @@
+/* pages/movie-rating/movie-rating-template.wxss */
+.rating {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.rating-star {
+  content: "";
+  display: inline-block;
+  width: 110rpx;
+  height: 22rpx;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-image:url(http://chuantu.biz/t6/46/1505191678x213968379.png);
+  background-size: 110rpx;
+}
+
+.allstar50 {
+  background-position: 0rpx 0rpx;
+}
+
+.allstar45 {
+  background-position: 0rpx -22rpx;
+}
+
+.allstar40 {
+  background-position: 0rpx -44rpx;
+}
+
+.allstar35 {
+  background-position: 0rpx -66rpx;
+}
+
+.allstar30 {
+  background-position: 0rpx -88rpx;
+}
+
+.allstar25 {
+  background-position: 0rpx -110rpx;
+}
+
+.allstar20 {
+  background-position: 0rpx -132rpx;
+}
+
+.allstar15 {
+  background-position: 0rpx -154rpx;
+}
+
+.allstar10 {
+  background-position: 0rpx -176rpx;
+}
+
+.allstar5 {
+  background-position: 0rpx -198rpx;
+}
+
+.allstar0 {
+  background-position: 0rpx -220rpx;
+}
+
+.rating-average {
+  margin-left: 120rpx;
+  font-size: 20rpx;
+  line-height: 22rpx;
+  color: #878787;
+  height: 22rpx;
+}
