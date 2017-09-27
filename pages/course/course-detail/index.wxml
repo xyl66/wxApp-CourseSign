@@ -7,6 +7,6 @@
     </template>
   </view>
   <view class='user-form-section bg-color-white margin-top-20px margin-left-20 margin-right-20 padding-left-right-20'>
-    <template is='signForm'/>
+    <template is='signForm' data='{{locInfo}}'/>
   </view>
 </view>

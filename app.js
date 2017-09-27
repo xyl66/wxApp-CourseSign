@@ -35,5 +35,41 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  Post:function(url,data){
+    return new Promise((resolve,reject)=>{
+      wx.request({
+        url: url, //仅为示例，并非真实的接口地址
+        data: data,
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded" // 默认值
+        },
+        method: 'POST',
+        success: function (res) {
+          resolve(res.data)
+        },
+        fail: function (err) {
+         reject(err)
+        }
+      })
+    })
+  },
+  Get: function (url, data) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url, //仅为示例，并非真实的接口地址
+        data: data,
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded" // 默认值
+        },
+        method: 'GET',
+        success: function (res) {
+          resolve(res.data)
+        },
+        fail: function (err) {
+          reject(err)
+        }
+      })
+    })
   }
 })

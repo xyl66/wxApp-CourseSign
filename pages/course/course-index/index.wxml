@@ -24,6 +24,7 @@
     </view>
 </view>
 <block wx:if="{{!showPicker}}">
+<!-- 选中日期课程 -->
 <view class="page-session page-session-spacing">
     <view class="session-header">
       <text class="session-header-title">{{headerTitle}}</text>
@@ -32,6 +33,20 @@
     <view class="session-content session-content-spacing">
       <scroll-view class="course-scroll margin-right-hide-{{listShow}}" scroll-x="true">
         <block wx:for="{{courseList}}" wx:key="id"  wx:for-item="item">
+         <template is="course-list" data="{{...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+</view>
+<!-- 历史记录 -->
+<view class="page-session page-session-spacing">
+    <view class="session-header">
+      <text class="session-header-title">全部课程</text>
+      <text class='iconfont icon-count light-blue-color session-header-hide'></text><text class='height-46 line-height-46 margin-left-10 font-size-32 font-weight-500 session-header-hide'>{{allCourseList.length}}</text>
+    </view>
+    <view class="session-content session-content-spacing">
+      <scroll-view class="course-scroll" scroll-x="true">
+        <block wx:for="{{allCourseList}}" wx:key="id"  wx:for-item="item">
          <template is="course-list" data="{{...item}}" />
         </block>
       </scroll-view>

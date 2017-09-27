@@ -14,8 +14,14 @@ var config = {
         // 获取课程列表
         getCourseListUrl: `${host}/v2/getCourseList`,
 
+        // 获取所有课程详情
+        getAllCourseInfoUrl: `${host}/v2/getAllCourseList`,
+        
         // 获取课程详情
         getCourseInfoUrl: `${host}/v1/coursesign/getCourseInfo`,
+        
+        // 签到
+        couseSignUrl: `${host}/v1/coursesign/sign`,
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,

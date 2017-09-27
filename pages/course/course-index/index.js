@@ -1,5 +1,7 @@
 'use strict';
-const config=require('../../../config');
+const config=require('../../../config'),
+//获取应用实例
+  app = getApp();
 let choose_year = null,
   choose_month = null;
 const conf = {
@@ -7,6 +9,7 @@ const conf = {
     hasEmptyGrid: false,
     showPicker: false,
     courseList:[],
+    allCourseList:[],
     headerTitle:'今日课程',
     listShow:'',
     courseCount:0,
@@ -195,8 +198,10 @@ const conf = {
     };
   },
   hourAndMin(val){
-    let st = new Date(val);
-    return (st.getHours() >= 10 ? st.getHours() : '0' + st.getHours()) + ':' + (st.getMinutes() >= 10 ? st.getMinutes() : '0' + st.getMinutes());
+    return val.substr(10)
+  },
+  getDate(val){
+    return val.substr(0,10)
   },
   getData(val){
     return new Promise((resolve,reject)=>{
@@ -213,11 +218,12 @@ const conf = {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         success: function (res) {
-          let dataArr = [];
-          for (let i in res.data) {
-            res.data[i].course_time_start = _this.hourAndMin(res.data[i].course_time_start * 1000);
-            res.data[i].course_time_end = _this.hourAndMin(res.data[i].course_time_end * 1000);
-            dataArr.push(res.data[i]);
+          let dataArr = [],
+            odata = res.data.data;
+          for (let i in odata) {
+            odata[i].course_time_start = _this.hourAndMin(odata[i].course_time_start);
+            odata[i].course_time_end = _this.hourAndMin(odata[i].course_time_end);
+            dataArr.push(odata[i]);
           }
           resolve(dataArr) ;
         },
@@ -237,9 +243,11 @@ const conf = {
   },
   dataInit(){
     const today = this.getToday(),
+    _this=this,
     days=this.data.days;
     //点亮
-    let index = days.findIndex(n => n.date == today);
+    let index = days.findIndex(n => n.date == today),
+      allDataUrl = config.service.getAllCourseInfoUrl;
     if (index !== -1) {
       days[index].choosed = !days[index].choosed;
     }
@@ -254,6 +262,19 @@ const conf = {
       wx.showToast({
         title: err.msg,
       })
+    });
+    //获取所有数据
+    console.log(allDataUrl)
+    app.Get(allDataUrl,'').then(res=>{
+      let odata = res.data,
+      dataArr=[];
+      for (let i in odata) {
+        Object.assign(odata[i], {date:_this.getDate(odata[i].course_time_start)})
+        odata[i].course_time_start = _this.hourAndMin(odata[i].course_time_start);
+        odata[i].course_time_end = _this.hourAndMin(odata[i].course_time_end);
+        dataArr.push(odata[i]);
+      }
+      this.setData({ allCourseList: dataArr });
     })
   },
   bindCourseDetail(event){

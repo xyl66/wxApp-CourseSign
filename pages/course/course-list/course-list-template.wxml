@@ -1,6 +1,6 @@
 <!--pages/tools/course-list/course-list-template.wxml-->
 <template name="course-list">
-  <view class="course-wrapper"  bindtap="bindCourseDetail" data-id="{{course_sign_id}}">
+  <view class="course-wrapper" bindtap="bindCourseDetail" data-id="{{course_sign_id}}">
     <view class="course-content">
       <view class='title-section width-380 margin-bottom-40 margin-top-20'>
         <text class="title font-size-28 ellipsis-1 width-380 bg-color-grren color-white radius-10 padding-5">{{name}}</text>
@@ -10,21 +10,25 @@
           <text class='iconfont icon-changdi pink-color'></text>
           <text class="margin-left-20 font-size-24 ellipsis-1 width-270 height-46 line-height-46">{{course_place}}</text>
         </view>
-        <view class='speaker box'>
+        <view class='speaker margin-bottom-20 box'>
           <text class='iconfont icon-ren blue-color'></text>
           <text class="speaker margin-left-20  font-size-24 ellipsis-1 width-270 height-46 line-height-46">{{course_speaker}}</text>
+        </view>
+        <view class='date box' wx:if="{{date}}">
+          <text class='iconfont icon-date orange-color'></text>
+          <text class="speaker margin-left-20  font-size-24 ellipsis-1 width-270 height-46 line-height-46">{{date}}</text>
         </view>
       </view>
       <view class='time-section space-between box margin-bottom-30 width-300'>
         <view class='start-time'>
-        <text class="font-size-24 block text-align-center">{{course_time_start}}</text>
-         <text class='iconfont icon-shijian block text-align-center green-color'></text>
+          <text class="font-size-24 block text-align-center">{{course_time_start}}</text>
+          <text class='iconfont icon-shijian block text-align-center green-color'></text>
         </view>
         <view class='end-time flot-right'>
-        <text class="title font-size-24 block text-align-center">{{course_time_end}}</text>
-        <text class='iconfont icon-shijian block text-align-center red-color'></text>
+          <text class="title font-size-24 block text-align-center">{{course_time_end}}</text>
+          <text class='iconfont icon-shijian block text-align-center red-color'></text>
         </view>
-        
+
       </view>
       <view class='footer-section height-100'>
         <text class='iconfont icon-people'></text>

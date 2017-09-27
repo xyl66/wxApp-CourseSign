@@ -5,7 +5,7 @@
     <text class='iconfont icon-userid green-color'></text>
     工号
     </view>
-    <input class='wd-100 padding-left-5 height-92 line-height-92' name="userid" placeholder="点此填写工号" />
+    <input class='wd-100 padding-left-5 height-92 line-height-92' name="userid" placeholder="点此填写工号"/>
   </view>
   <view class="page-session section box">
     <view class="section__title wd-85px height-92 line-height-92">
@@ -26,11 +26,11 @@
     <text class='iconfont icon-loc green-color'></text>    
     地点
     </view>
-    <input class='wd-100 padding-left-5 height-92 line-height-92' name="loc" placeholder="点此填写地点" />
+    <input class='wd-100 padding-left-5 height-92 line-height-92' name="loc" placeholder="点此填写地点" value="{{locInfo}}"/>
   </view>
-  <view class="btn-area margin-top-20px">
+  <view class="btn-area margin-top-20px padding-top-bottom-10">
     <button type='primary' formType="submit">确认签到</button>
-    <button type='default'  formType="reset">重置</button>
+    <button class='margin-top-8px' type='default'  formType="reset">重置</button>
   </view>
 </form>
 </template>
